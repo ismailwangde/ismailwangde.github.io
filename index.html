@@ -365,6 +365,7 @@ body.locked{overflow:hidden}
     <ul class="more-list">
       <li><b>Computer Vision collection</b> <span>detection and tracking, OCR, preprocessing, segmentation</span> <a href="https://github.com/ismailwangde/Computer-Vision">Repo</a></li>
       <li><b>NLP &amp; Speech collection</b> <span>NER, semantic search, OCR question answering, transformers</span> <a href="https://github.com/ismailwangde/Speech-Natural-Language-Processing">Repo</a></li>
+      <li><b>Noise Cancellation</b> <span>CNN + LSTM over STFT spectrograms, trained on audio I recorded myself</span> <a href="https://github.com/ismailwangde/Noise-Cancellation">Repo</a></li>
       <li><b>Online Banking on AWS</b> <span>Cognito, SageMaker, Amplify, DynamoDB; LDA credit scoring at 96%</span></li>
       <li><b>PCA on face images</b> <span>Olivetti faces, dimensionality reduction and reconstruction, live OpenCV capture</span> <a href="https://github.com/ismailwangde/PCA-on-Image">Repo</a></li>
     </ul>
@@ -510,17 +511,6 @@ body.locked{overflow:hidden}
         did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
         tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
-      },
-      {
-        id:"noise", title:"Noise Cancellation", kicker:"Audio · signal processing",
-        tag:"CNN + LSTM", state:"",
-        frank:"2025", franknote:"Pulling a voice back out of a recording made in a noisy room",
-        desc:"Strips steady background noise off a voice recording.",
-        lede:"A model that removes stationary background noise from audio, isolating the voice underneath it.",
-        what:"I recorded three sets of audio myself — clean voice, background noise alone, and the two mixed — then used a Short-Time Fourier Transform to move into the frequency domain, where steady noise is separable from speech, and trained a CNN and LSTM to do the separation.",
-        did:"Collected the dataset, built the STFT pipeline, and trained the models. Doing the data collection by hand is what taught me why the mixed-signal case is hard: the noise isn't just added on top, it changes how the voice itself lands.",
-        tech:["CNN","LSTM","STFT","TensorFlow","librosa"],
-        links:[{t:"Repository",u:"https://github.com/ismailwangde/Noise-Cancellation"}]
       }
     ],
     roles:[
