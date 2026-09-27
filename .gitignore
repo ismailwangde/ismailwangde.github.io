@@ -1,0 +1,16 @@
+# raw recordings never go in the repo
+*.mov
+*.MOV
+*.avi
+*.mkv
+*.gif
+*.mp4
+*.webm
+# ...except the compressed demo loops the page uses
+!assets/exercise.mp4
+!assets/exercise.webm
+!assets/vehicle.mp4
+!assets/vehicle.webm
+
+.DS_Store
+*.local.html

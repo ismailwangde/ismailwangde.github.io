@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ismail Wangde — Data Scientist, Mumbai</title>
+<meta name="description" content="Ismail Wangde — Data Scientist at Fundly.ai. I build ML systems end to end, from raw data to production. Credit risk, LLM systems, computer vision.">
+<meta property="og:title" content="Ismail Wangde — Data Scientist">
+<meta property="og:description" content="I build ML systems end to end — raw data to production. Credit risk and LLM systems at Fundly.ai, Mumbai.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2A1D16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+/* ==========================================================================
+   POSTCARDS — warm taupe ground, espresso ink, white cards, deep pine accent.
+   Deliberately not cream + serif + terracotta: the ground sits a shade
+   deeper and greyer, and the display face is a hard industrial grotesk.
+   The two espresso bands are the page's dark anchors.
+   ========================================================================== */
+:root{
+  --ground:#E7E1D9; --ground-2:#DED6CB;
+  --ink:#2A1D16; --ink-soft:#4A382C;
+  --muted:#6B5849; --faint:#93806D;
+  --rule:#CDC1B3; --rule-soft:#DBD2C6;
+  --card:#FDFCFA; --well:#E2DACE; --well-ink:#8B7A67;
+  --pine:#1E4A40; --sienna:#8A4A22; --cream:#F2EBE0;
+  --max:1200px; --pad:clamp(20px,4.4vw,56px);
+}
+*{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+ul,ol{list-style:none;margin:0;padding:0}
+p,h1,h2,h3,h4,figure,figcaption,dl,dd,dt{margin:0}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:60;background:var(--ink);color:var(--cream);padding:10px 14px}
+
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+h1,h2,.card-title,.feat-title{
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  text-transform:uppercase;letter-spacing:-.035em;font-weight:800;text-wrap:balance;
+}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:30;background:rgba(231,225,217,.93);backdrop-filter:saturate(130%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+.nav-name{font-family:"Archivo",sans-serif;font-weight:800;font-size:15px;letter-spacing:-.03em;text-transform:uppercase}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:13.5px;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:var(--cream);padding:9px 14px}
+.nav-cta:hover{background:var(--pine)}
+
+/* ---------- hero ---------- */
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.hero-main{display:flex;flex-direction:column;gap:20px;min-width:0}
+.hero-loc{color:var(--pine)}
+.hero h1{font-size:clamp(40px,7vw,74px);line-height:.92}
+.hero-thesis{font-size:clamp(18px,2.1vw,23px);line-height:1.42;font-weight:600;letter-spacing:-.015em;max-width:31ch}
+.hero-role{font-size:14.5px;line-height:1.68;color:var(--muted);max-width:46ch}
+.hero-role b{color:var(--ink);font-weight:600}
+.hero-links{display:flex;flex-wrap:wrap;gap:9px}
+.hero-links a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--ink);padding:10px 15px;background:var(--card)}
+.hero-links a:hover{background:var(--ink);color:var(--cream)}
+.portrait{background:var(--card);padding:11px 11px 0;box-shadow:0 18px 40px -20px rgba(42,29,22,.34),0 1px 0 rgba(42,29,22,.07)}
+.portrait-well{aspect-ratio:4/5;background:var(--well);display:flex;align-items:flex-end;justify-content:center;padding:14px}
+.portrait-well .mono{color:var(--well-ink);text-align:center;line-height:1.8}
+.portrait figcaption{font-family:"Archivo",sans-serif;font-weight:700;font-size:12.5px;padding:11px 2px 13px;display:flex;justify-content:space-between;gap:10px}
+.portrait figcaption span:last-child{color:var(--faint);font-weight:500}
+
+/* ---------- espresso metric band ---------- */
+.strip{background:var(--ink);color:var(--cream)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding-block:24px}
+.strip dt{color:#A99483}
+.strip dd{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:clamp(20px,2.7vw,28px);font-variant-numeric:tabular-nums;line-height:1.05;margin-top:5px}
+.strip dd small{font-size:.5em;font-weight:400;color:#A99483;letter-spacing:.08em}
+.strip div+div{border-left:1px solid #46352A;padding-left:26px}
+
+/* ---------- sections ---------- */
+.sec{border-top:1px solid var(--rule)}
+.sec>.wrap{padding-block:clamp(38px,5vw,68px)}
+.sec-head{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
+.sec-head-text{display:flex;flex-direction:column;gap:9px}
+.sec-head .mono{color:var(--pine)}
+.sec-head h2{font-size:clamp(23px,3.2vw,36px);line-height:1}
+
+/* ---------- featured ---------- */
+.feat{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,3.6vw,48px);align-items:start}
+.feat--flip{grid-template-columns:1.1fr .9fr}
+.feat--flip .feat-media{order:-1}
+.feat-body{display:flex;flex-direction:column;gap:14px;min-width:0}
+.feat-title{font-size:clamp(26px,3.6vw,42px);line-height:.95}
+.feat-lede{font-size:16.5px;line-height:1.6;font-weight:500}
+.feat p.body{font-size:14.5px;line-height:1.72;color:var(--muted);max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.chips li{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.05em;border:1px solid var(--rule);padding:5px 10px;color:var(--muted);background:var(--card)}
+.feat-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px}
+.feat-actions a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pine);border-bottom:2px solid var(--pine);padding-bottom:3px}
+.feat-actions a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.feat-media{display:flex;flex-direction:column;gap:11px}
+.feat-media figcaption{font-size:12.5px;color:var(--faint)}
+
+/* white postcard mount for a wide screenshot */
+.mount{background:var(--card);padding:11px;box-shadow:0 16px 36px -20px rgba(42,29,22,.30),0 1px 0 rgba(42,29,22,.06)}
+.mount img{width:100%}
+
+/* cookassist runs on a phone, so it gets a device rather than a card mount —
+   the frame holds a portrait screenshot today and a portrait screen
+   recording later, with no layout change */
+.feat--phone{grid-template-columns:1fr minmax(230px,290px)}
+.device{
+  background:var(--ink);padding:9px;border-radius:28px;
+  box-shadow:0 26px 54px -22px rgba(42,29,22,.5),0 2px 0 rgba(42,29,22,.1);
+}
+.device-screen{border-radius:20px;overflow:hidden;background:#000;aspect-ratio:720/1559;position:relative}
+.device-screen img,.device-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- postcard rail ---------- */
+.rail-controls{display:flex;gap:6px}
+.rail-btn{border:1px solid var(--ink);background:var(--card);width:38px;height:38px;display:grid;place-items:center}
+.rail-btn:hover:not(:disabled){background:var(--ink);color:var(--cream)}
+.rail-btn:disabled{opacity:.3;cursor:default}
+.rail-btn svg{width:14px;height:14px}
+.rail-outer{position:relative;margin-inline:calc(var(--pad) * -1)}
+.rail{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:6px var(--pad) 24px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-track{background:var(--rule-soft)}
+.rail::-webkit-scrollbar-thumb{background:var(--rule)}
+.card{
+  flex:0 0 330px;scroll-snap-align:start;
+  background:var(--card);color:var(--ink);padding:10px 10px 0;text-align:left;
+  display:flex;flex-direction:column;
+  box-shadow:0 12px 30px -18px rgba(42,29,22,.34),0 1px 0 rgba(42,29,22,.06);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 22px 44px -18px rgba(42,29,22,.42)}
+.card-well{aspect-ratio:3/2;background:var(--well);display:flex;align-items:flex-end;padding:11px;position:relative;overflow:hidden}
+.card-well img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-well .mono{color:var(--well-ink);font-size:9px;line-height:1.7;position:relative}
+/* franking block — the designed no-image treatment */
+.card-frank{aspect-ratio:3/2;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;justify-content:space-between;padding:13px;position:relative}
+.card-frank .frank-yr{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.card-frank .frank-note{font-size:11.5px;line-height:1.45;color:#B3A08D;max-width:26ch}
+.card-tag{position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:4px 7px;z-index:1}
+.card-tag[data-state="progress"]{background:var(--sienna)}
+.card-tag[data-state="paper"]{background:var(--pine)}
+.card-frank .card-tag{background:var(--cream);color:var(--ink)}
+.card-cap{padding:13px 3px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-title{font-size:16px;line-height:1.1;letter-spacing:-.03em}
+.card-desc{font-size:12.5px;line-height:1.5;color:var(--muted)}
+.card-more{margin-top:auto;padding-top:11px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--pine);display:flex;align-items:center;gap:6px}
+.card-more::after{content:"";width:14px;height:1px;background:var(--pine)}
+.rail-hint{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:-8px}
+
+/* ---------- compact list ---------- */
+.more-list{margin-top:8px;border-top:1px solid var(--rule)}
+.more-list li{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule-soft);font-size:14px;color:var(--muted)}
+.more-list b{color:var(--ink);font-weight:600}
+.more-list a{color:var(--pine);border-bottom:1px solid rgba(30,74,64,.3)}
+.more-list a:hover{border-bottom-color:var(--pine)}
+
+/* ---------- education + footer ---------- */
+.edu-row{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;font-size:15px;color:var(--muted)}
+.edu-row b{color:var(--ink);font-weight:600}
+.edu-row .mono{color:var(--faint);font-variant-numeric:tabular-nums}
+.foot{background:var(--ink);color:var(--cream)}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:baseline;padding-block:34px}
+.foot p{font-family:"Archivo",sans-serif;font-weight:800;font-size:19px;letter-spacing:-.035em;text-transform:uppercase}
+.foot-links{display:flex;flex-wrap:wrap;gap:20px}
+.foot-links a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#B3A08D}
+.foot-links a:hover{color:var(--cream)}
+
+/* ---------- expanded card ---------- */
+.sheet-back{position:fixed;inset:0;z-index:50;background:rgba(30,20,14,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px);opacity:0;pointer-events:none;transition:opacity .2s ease}
+.sheet-back.open{opacity:1;pointer-events:auto}
+.sheet{background:var(--card);width:min(940px,100%);max-height:min(88vh,900px);overflow-y:auto;padding:13px;transform:scale(.94);transition:transform .22s cubic-bezier(.2,.8,.3,1);box-shadow:0 40px 90px -30px rgba(30,20,14,.6)}
+.sheet-back.open .sheet{transform:scale(1)}
+.sheet-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:2px 2px 11px}
+.sheet-top .mono{color:var(--faint)}
+.sheet-close{width:34px;height:34px;border:1px solid var(--rule);display:grid;place-items:center;flex:0 0 auto}
+.sheet-close:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.sheet-close svg{width:13px;height:13px}
+.sheet-media{background:var(--well);display:flex;align-items:flex-end;padding:0}
+.sheet-media video,.sheet-media img{width:100%}
+.sheet-media.is-empty{aspect-ratio:16/9;padding:16px}
+.sheet-media .mono{color:var(--well-ink)}
+.sheet-credit{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.08em;color:var(--faint);padding:9px 2px 0}
+.sheet-body{padding:20px 4px 8px;display:flex;flex-direction:column;gap:16px}
+.sheet-body h3{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.035em;font-size:clamp(24px,3.4vw,36px);line-height:.98}
+.sheet-lede{font-size:16.5px;line-height:1.55;font-weight:500}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px}
+.sheet-grid h4{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pine);margin-bottom:7px}
+.sheet-grid p{font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+.sheet-actions{display:flex;flex-wrap:wrap;gap:18px;padding-top:4px}
+.sheet-actions a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pine);border-bottom:2px solid var(--pine);padding-bottom:3px}
+body.locked{overflow:hidden}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px;padding-block:32px 40px}
+  .portrait{max-width:340px}
+  .feat,.feat--flip,.feat--phone{grid-template-columns:1fr;gap:24px}
+  .feat-media,.feat--flip .feat-media{order:-1}
+  .feat--phone .feat-media{justify-self:center;max-width:280px}
+  .strip .wrap{grid-template-columns:1fr 1fr;gap:20px}
+  .strip div+div{border-left:0;padding-left:0}
+  .strip div:nth-child(2),.strip div:nth-child(4){border-left:1px solid #46352A;padding-left:20px}
+  .nav-links{display:none}
+  .rail-controls{display:none}
+  .card{flex-basis:290px}
+  .sheet-body h3{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+  .rail{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <span class="nav-name">Ismail Wangde</span>
+    <nav class="nav-links">
+      <a href="#cookassist">Cookassist</a>
+      <a href="#istock">istock</a>
+      <a href="#projects">Projects</a>
+      <a href="#work">Work</a>
+      <a href="#research">Research</a>
+    </nav>
+    <a class="nav-cta mono" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-main">
+      <p class="mono hero-loc">Mumbai, India · open to remote</p>
+      <h1>Ismail Wangde</h1>
+      <p class="hero-thesis">I build ML systems end to end — raw data to production.</p>
+      <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, working on credit risk models and LLM systems. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
+      <ul class="hero-links">
+        <li><a href="https://github.com/ismailwangde">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/ismailwangde/">LinkedIn</a></li>
+        <li><a href="mailto:wangdeismail@gmail.com">Email</a></li>
+      </ul>
+    </div>
+    <div class="hero-aside">
+      <figure class="portrait">
+        <div class="portrait-well"><span class="mono">Your photo<br>portrait crop, 4:5</span></div>
+        <figcaption><span>Ismail Wangde</span><span>Mumbai</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><dt class="mono">Experience</dt><dd>2<small> yrs</small></dd></div>
+    <div><dt class="mono">ETL pipeline</dt><dd>4<small> TB</small></dd></div>
+    <div><dt class="mono">History rebuilt</dt><dd>50<small> mo</small></dd></div>
+    <div><dt class="mono">Papers published</dt><dd>3</dd></div>
+  </div>
+</div>
+
+<section class="sec" id="cookassist">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Featured · built and running</span>
+        <h2>Cookassist</h2>
+      </div>
+    </div>
+    <div class="feat feat--phone">
+      <div class="feat-body">
+        <p class="feat-lede">A Hindi voice assistant for a home kitchen — it reads the recipe out loud, answers questions mid-cook, and works out what needs prepping tonight for tomorrow.</p>
+        <p class="body">I built it to kill a daily manual routine in my own house, not as a portfolio demo. That constraint drove every decision: it speaks and listens in Hindi, it has to work with wet hands, and it has to work when the wifi drops — so it runs offline as a PWA on the home network.</p>
+        <p class="body">It checks the pantry before you start, walks the steps one at a time, and projects tomorrow's prep from tonight's plan.</p>
+        <ul class="chips">
+          <li>Python</li><li>FastAPI</li><li>SQLite</li><li>Offline PWA</li><li>LLM</li><li>Hindi TTS / ASR</li>
+        </ul>
+        <div class="feat-actions">
+          <a href="https://github.com/ismailwangde/cook-assist">View repository</a>
+        </div>
+      </div>
+      <figure class="feat-media">
+        <!-- TO SWAP IN THE SCREEN RECORDING: replace the <img> below with
+             <video autoplay muted loop playsinline poster="assets/cook-pantry.webp">
+               <source src="assets/cookassist.webm" type="video/webm">
+               <source src="assets/cookassist.mp4" type="video/mp4">
+             </video>
+             Nothing else changes — the device frame already holds portrait media. -->
+        <div class="device">
+          <div class="device-screen">
+            <img src="assets/cook-pantry.webp" width="720" height="1559" alt="Cookassist asking in Hindi whether coriander, white chana and capsicum are in stock, with yes and no buttons and a speaking bar along the bottom." loading="lazy">
+          </div>
+        </div>
+        <figcaption>It checks the pantry in Hindi before you start cooking.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="istock">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Featured · in progress</span>
+        <h2>istock</h2>
+      </div>
+    </div>
+    <div class="feat feat--flip">
+      <div class="feat-body">
+        <p class="feat-lede">Transparency-first equity research, built as a deliberate counter to black-box “AI stock picker” products.</p>
+        <p class="body">Everything that goes into a verdict is shown on the page — and so is everything that argues against it. The screenshot is a real output: <b>7 supporting signals against 9 risk signals</b>, each with the actual number behind it, plus 40 more lower-signal factors you can expand. No blind buy or sell call.</p>
+        <p class="body">Underneath it is a 12-module fundamental scoring engine and a QuantConnect/LEAN harness that cost- and regime-stress-tests published strategies, rejecting the ones that don't survive net of real trading costs. Most don't, which is the point. Next up is ML meta-labelling — the rules make the trades, and a model decides when to trust the rule.</p>
+        <ul class="chips">
+          <li>Python</li><li>QuantConnect / LEAN</li><li>pandas</li><li>Backtesting</li>
+        </ul>
+        <div class="feat-actions">
+          <a href="https://github.com/ismailwangde/istock">View repository</a>
+        </div>
+      </div>
+      <figure class="feat-media">
+        <div class="mount">
+          <img src="assets/istock-verdicts.webp" width="1600" height="904" alt="istock interface showing a price chart with moving averages and volume, then a Why This Verdict panel listing seven supporting signals and nine risk signals with their underlying values." loading="lazy">
+        </div>
+        <figcaption>Every signal, and every counter-signal, with the number behind it.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Projects</span>
+        <h2>Other things I've built</h2>
+      </div>
+      <div class="rail-controls" data-for="rail-projects">
+        <button class="rail-btn" data-dir="-1" aria-label="Scroll projects left"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button class="rail-btn" data-dir="1" aria-label="Scroll projects right"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <p class="rail-hint">Scroll sideways · click any card for detail</p>
+    <div class="rail-outer"><div class="rail" id="rail-projects" data-set="projects"></div></div>
+
+    <ul class="more-list">
+      <li><b>Computer Vision collection</b> <span>detection and tracking, OCR, preprocessing, segmentation</span> <a href="https://github.com/ismailwangde/Computer-Vision">Repo</a></li>
+      <li><b>NLP &amp; Speech collection</b> <span>NER, semantic search, OCR question answering, transformers</span> <a href="https://github.com/ismailwangde/Speech-Natural-Language-Processing">Repo</a></li>
+      <li><b>Online Banking on AWS</b> <span>Cognito, SageMaker, Amplify, DynamoDB; LDA credit scoring at 96%</span></li>
+      <li><b>PCA on face images</b> <span>Olivetti faces, dimensionality reduction and reconstruction, live OpenCV capture</span> <a href="https://github.com/ismailwangde/PCA-on-Image">Repo</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Where I've worked</span>
+        <h2>Systems I've shipped</h2>
+      </div>
+    </div>
+    <div class="feat">
+      <div class="feat-body">
+        <h3 class="feat-title">Fundly.ai</h3>
+        <p class="feat-lede">Data Science Analyst · Mumbai · Jun 2025 — now</p>
+        <p class="body">I built <b>IRIS</b>, a multi-agent text-to-SQL system that lets non-technical teams ask business questions in plain English. I designed the Intent Agent and Query Planner — domain intent classification, few-shot SQL generation, and the handling for ambiguous questions and ones the data simply can't answer.</p>
+        <p class="body">Also here: an Early Warning System that scores customer risk at disbursement, a multi-vertical customer score spanning lending, payments, commerce, bureau and GST, and the rebuild that took usable history from 8 months to 50.</p>
+        <ul class="chips">
+          <li>Multi-agent LLM</li><li>Text-to-SQL</li><li>Credit risk</li><li>Python</li><li>SQL</li><li>AWS</li>
+        </ul>
+      </div>
+      <figure class="feat-media">
+        <div class="mount">
+          <div class="card-frank" style="aspect-ratio:16/9">
+            <span class="frank-yr">IRIS</span>
+            <span class="frank-note">Intent Agent → Query Planner → few-shot SQL generation, over a YAML schema. Fundly's system, so it stays at architecture level.</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Earlier roles</span>
+        <h2>Before Fundly</h2>
+      </div>
+      <div class="rail-controls" data-for="rail-roles">
+        <button class="rail-btn" data-dir="-1" aria-label="Scroll roles left"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button class="rail-btn" data-dir="1" aria-label="Scroll roles right"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <p class="rail-hint">Scroll sideways · click any card for detail</p>
+    <div class="rail-outer"><div class="rail" id="rail-roles" data-set="roles"></div></div>
+  </div>
+</section>
+
+<section class="sec" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Publications</span>
+        <h2>Research</h2>
+      </div>
+      <div class="rail-controls" data-for="rail-papers">
+        <button class="rail-btn" data-dir="-1" aria-label="Scroll papers left"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button class="rail-btn" data-dir="1" aria-label="Scroll papers right"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+    <p class="rail-hint">Scroll sideways · click any card for detail</p>
+    <div class="rail-outer"><div class="rail" id="rail-papers" data-set="papers"></div></div>
+  </div>
+</section>
+
+<section class="sec" id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head-text">
+        <span class="mono">Education</span>
+        <h2>Education</h2>
+      </div>
+    </div>
+    <div class="edu-row">
+      <b>BTech, Data Science</b>
+      <span>Mukesh Patel School of Technology, Management &amp; Engineering, Mumbai</span>
+      <span class="mono">2021 — 2025 · CGPA 3.43/4</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <p>Open to data science &amp; ML engineering roles</p>
+    <ul class="foot-links">
+      <li><a href="mailto:wangdeismail@gmail.com">wangdeismail@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/ismailwangde/">LinkedIn</a></li>
+      <li><a href="https://github.com/ismailwangde">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="sheet-back" id="sheetBack" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = {
+    projects:[
+      {
+        id:"exercise", title:"Exercise Classification", kicker:"Real-time computer vision",
+        tag:"Live demo", state:"",
+        poster:"assets/exercise-poster.webp",
+        video:["assets/exercise.webm","assets/exercise.mp4"],
+        alt:"Pose skeleton tracked over a person standing, with squats and pushups labels on screen and the active exercise highlighted.",
+        desc:"Names the exercise you're doing and counts your reps, live.",
+        lede:"A real-time system that watches a video feed, works out which exercise is being performed, and counts the repetitions as they happen.",
+        what:"MediaPipe Pose maps the body's joint locations frame by frame, and an LSTM classifies the movement sequence into an exercise — squats, push-ups and others — while a rep counter tracks each completed cycle.",
+        did:"Built the whole pipeline: pose extraction, the sequence model, and the rep-counting logic that has to survive people moving at different speeds and standing at different distances from the camera.",
+        tech:["MediaPipe Pose","LSTM","TensorFlow","OpenCV","Python"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Exercise-Classification"}]
+      },
+      {
+        id:"noise", title:"Noise Cancellation", kicker:"Audio · signal processing",
+        tag:"CNN + LSTM", state:"",
+        frank:"2025", franknote:"Pulling a voice back out of a recording made in a noisy room",
+        desc:"Strips steady background noise off a voice recording.",
+        lede:"A model that removes stationary background noise from audio, isolating the voice underneath it.",
+        what:"I recorded three sets of audio myself — clean voice, background noise alone, and the two mixed — then used a Short-Time Fourier Transform to move into the frequency domain, where steady noise is separable from speech, and trained a CNN and LSTM to do the separation.",
+        did:"Collected the dataset, built the STFT pipeline, and trained the models. Doing the data collection by hand is what taught me why the mixed-signal case is hard: the noise isn't just added on top, it changes how the voice itself lands.",
+        tech:["CNN","LSTM","STFT","TensorFlow","librosa"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Noise-Cancellation"}]
+      },
+      {
+        id:"snow", title:"Snow Cover Prediction", kicker:"Time series",
+        tag:"MSE 0.0174", state:"",
+        frank:"2023", franknote:"Satellite snow-cover series, forecast with ARIMA and SARIMAX",
+        desc:"Forecasting snow cover from satellite imagery.",
+        lede:"A forecast of snow cover built from satellite data pulled straight out of Google Earth Engine.",
+        what:"Collected the raw snow-cover series from Earth Engine, resampled it, decomposed trend and seasonality, then fitted ARIMA and SARIMAX — landing at a mean squared error of 0.0174.",
+        did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
+        tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
+      }
+    ],
+    roles:[
+      {
+        id:"invento", title:"InventoHub", kicker:"AI/ML Engineer · Jan — Jun 2025",
+        tag:"6 months", state:"", frank:"2025", franknote:"4TB across 45 years, made queryable",
+        desc:"45 years of data, 4TB of it, made queryable.",
+        lede:"AI/ML Engineer — I built the pipeline that turned 45 years of raw data into something a query could actually reach.",
+        what:"An end-to-end ML pipeline: ETL over roughly 4TB spanning 45 years, preprocessing in AWS Glue, and deployment into an Aurora Serverless v2 database.",
+        did:"Designed and implemented the pipeline, built a similarity search model on e5 embeddings and deployed it on AWS, and led a team of interns across extraction and model development.",
+        tech:["AWS Glue","Aurora Serverless v2","Spark","Selenium","PostgreSQL","e5 embeddings"],
+        links:[]
+      },
+      {
+        id:"nanavati", title:"Nanavati Hospital", kicker:"ML Research Intern · Dec 2023 — Jun 2024",
+        tag:"Research", state:"", frank:"2024", franknote:"Spinal cord shift prediction for cancer treatment planning",
+        desc:"Predicting spinal cord shift in cancer patients.",
+        lede:"ML Research Intern — a deep learning pipeline predicting how a patient's spinal cord shifts, for use in cancer treatment planning.",
+        what:"A deep learning pipeline over medical imaging, using contouring and segmentation to predict spinal cord displacement.",
+        did:"Built the pipeline and the computer-vision side of it. The hard part wasn't the model — it was working inside clinical data constraints, and with clinicians who needed the output to be interpretable before they'd act on it.",
+        tech:["Deep learning","Segmentation","Medical imaging","Python"],
+        links:[]
+      },
+      {
+        id:"databyte", title:"Databyte Services", kicker:"ML Research Intern · Jul 2023 — Dec 2024",
+        tag:"86% accuracy", state:"",
+        poster:"assets/crime-tracking.webp",
+        alt:"Two mall corridor camera views with red boxes around tracked people, beside a pixelated face inside a green box labelled Match 0.62.",
+        credit:"Faces pixelated for publication.",
+        desc:"Detection, face matching and tracking across cameras.",
+        lede:"ML Research Intern — detecting suspicious activity and following the same subject across a multi-camera setup, at 86% detection accuracy.",
+        what:"A detection and tracking model that flags suspicious activity and holds the subject's identity as they move between camera feeds.",
+        did:"Built the model in PyTorch and TensorFlow using pre-trained detection models from Roboflow and YOLO. Both IEEE surveillance papers grew out of this work.",
+        tech:["PyTorch","TensorFlow","YOLO","Roboflow"],
+        links:[]
+      },
+      {
+        id:"alorb", title:"Alorb Technologies", kicker:"AI/ML Intern · May — Jul 2023",
+        tag:"First role", state:"", frank:"2023", franknote:"Productivity prediction at R² 0.93, with a Power BI front end",
+        desc:"What actually drives employee productivity.",
+        lede:"AI/ML Intern — my first role, working out which factors actually move employee productivity, then predicting it.",
+        what:"A model predicting employee productivity at an R² of 0.93, with Power BI dashboards as the front end so the findings were usable by people who don't write code.",
+        did:"Built the model and the dashboards, integrated ChatGPT into the app for text and meeting summarisation, and researched generative AI for security and privacy.",
+        tech:["Machine learning","Power BI","OpenAI API","Python"],
+        links:[]
+      }
+    ],
+    papers:[
+      {
+        id:"icoct", title:"AI Detection & Tracking for Crime Prevention", kicker:"IEEE ICOCT 2025",
+        tag:"IEEE", state:"paper",
+        poster:"assets/crime-detection.webp",
+        alt:"Three panels from the system: a pixelated face inside a green box labelled Match 0.62, and two mall corridor views with red person-detection boxes.",
+        credit:"Faces pixelated for publication.",
+        desc:"Detect a person, then re-identify them by face.",
+        lede:"AI Detection and Tracking System for Crime Prevention and Identification in Real-Time Surveillance — IEEE ICOCT 2025.",
+        what:"A surveillance system that detects subjects in real time, re-identifies them by face against a reference, and tracks them across camera views — aimed at prevention while something is happening, rather than review after the fact.",
+        did:"Co-authored, building on the multi-camera detection and tracking work I did at Databyte Services. The panels show the two halves working together: person detection in the corridor views, and the face match that ties a detection to an identity.",
+        limits:"The match in this run came back at 0.62 confidence on ordinary phone footage. That is a number for flagging a candidate to a human reviewer, not one to act on automatically — and being clear about which of those two things you are building matters more here than the model does.",
+        tech:["Computer vision","Face recognition","Object tracking","Deep learning"],
+        links:[{t:"IEEE Xplore",u:"https://ieeexplore.ieee.org/document/11118424"}]
+      },
+      {
+        id:"icssas", title:"AI-Assisted Hit-and-Run Detection", kicker:"IEEE ICSSAS 2025",
+        tag:"IEEE", state:"paper",
+        poster:"assets/vehicle-poster.webp",
+        video:["assets/vehicle.webm","assets/vehicle.mp4"],
+        alt:"Traffic camera view with a green tracking box drawn around a white van, labelled Matched ID 1.",
+        credit:"Slowed to 0.4×. Demo run on public CCTV footage of a 2012 collision (source: Telegraph.co.uk).",
+        desc:"Collision detection, then re-identifying the vehicle.",
+        lede:"AI-Assisted Hit-and-Run Detection and Tracking — IEEE ICSSAS 2025. The clip is the pipeline running: it detects the collision and then re-identifies the van involved, labelling it with the matched tracking ID.",
+        what:"Detection and multi-object tracking on YOLO and pre-trained detection models, plus re-identification to recognise the same vehicle again after the view changes — a vehicle that leaves one frame and re-enters looks like a brand new object to a naive tracker.",
+        did:"Built the detection and tracking pipeline the paper describes, and co-authored the write-up. A second paper at IEEE ICOCT 2025 came out of the same line of work.",
+        limits:"Re-identification fires at moments rather than holding a continuous lock — it matched for about half a second in this clip. Low CCTV resolution, occlusion behind the traffic island, and the shifting camera angle each break the match, and closing those gaps is the open problem.",
+        tech:["PyTorch","YOLO","OpenCV","Roboflow","Re-identification"],
+        links:[
+          {t:"IEEE Xplore",u:"https://ieeexplore.ieee.org/document/11081327"},
+          {t:"Code",u:"https://github.com/ismailwangde/Hit-and-Run-Detection-Tracking"}
+        ]
+      },
+      {
+        id:"icmpc", title:"Plus Minus Method", kicker:"ICMPC 2023 · E3S Conferences",
+        tag:"Published", state:"", frank:"2023", franknote:"A transport-logistics optimisation that beat the standard methods",
+        desc:"Optimising transportation logistics.",
+        lede:"Plus Minus Method — an optimisation approach for transportation logistics, published at ICMPC 2023 in E3S Conferences.",
+        what:"A method for solving transportation cost problems that outperformed the standard approaches on the cases we tested.",
+        did:"Co-authored. My first publication, and where I learned that a result only counts once someone else can reproduce it from the write-up.",
+        tech:["Optimisation","Operations research"],
+        links:[{t:"Read the paper (PDF)",u:"https://www.e3s-conferences.org/articles/e3sconf/pdf/2023/67/e3sconf_icmpc2023_01267.pdf"}]
+      }
+    ]
+  };
+
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  function postcard(item, set){
+    var tag = item.tag ? '<span class="card-tag" data-state="'+esc(item.state||"")+'">'+esc(item.tag)+'</span>' : '';
+    var top;
+    if(item.poster){
+      top = '<span class="card-well">'+tag+'<img src="'+esc(item.poster)+'" alt="'+esc(item.alt||"")+'" loading="lazy"></span>';
+    } else if(item.frank){
+      top = '<span class="card-frank">'+tag
+          + '<span class="frank-yr">'+esc(item.frank)+'</span>'
+          + '<span class="frank-note">'+esc(item.franknote)+'</span></span>';
+    } else {
+      top = '<span class="card-well">'+tag+'</span>';
+    }
+    return '<button class="card" type="button" data-set="'+set+'" data-id="'+item.id+'">'
+      + top
+      + '<span class="card-cap">'
+      +   '<span class="card-title">'+esc(item.title)+'</span>'
+      +   '<span class="card-desc">'+esc(item.desc)+'</span>'
+      +   '<span class="card-more">Detail</span>'
+      + '</span></button>';
+  }
+
+  document.querySelectorAll(".rail").forEach(function(rail){
+    rail.innerHTML = DATA[rail.dataset.set].map(function(i){ return postcard(i, rail.dataset.set); }).join("");
+  });
+
+  document.querySelectorAll(".rail-controls").forEach(function(group){
+    var rail = document.getElementById(group.dataset.for);
+    if(!rail) return;
+    var btns = group.querySelectorAll(".rail-btn");
+    function step(dir){
+      var card = rail.querySelector(".card");
+      var by = card ? card.offsetWidth + 18 : 330;
+      rail.scrollBy({ left: dir * by * 2, behavior:"smooth" });
+    }
+    function sync(){
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      btns[0].disabled = rail.scrollLeft <= 2;
+      btns[1].disabled = rail.scrollLeft >= max;
+    }
+    btns.forEach(function(b){ b.addEventListener("click", function(){ step(Number(b.dataset.dir)); }); });
+    rail.addEventListener("scroll", sync, { passive:true });
+    window.addEventListener("resize", sync);
+    sync();
+  });
+
+  var back = document.getElementById("sheetBack");
+  var sheet = document.getElementById("sheet");
+  var lastTrigger = null;
+
+  function blk(label, text){ return text ? '<div><h4>'+label+'</h4><p>'+esc(text)+'</p></div>' : ''; }
+
+  function media(item){
+    var inner = "";
+    if(item.video){
+      var srcs = item.video.map(function(v){
+        var type = /\.webm$/.test(v) ? "video/webm" : "video/mp4";
+        return '<source src="'+esc(v)+'" type="'+type+'">';
+      }).join("");
+      inner = '<div class="sheet-media"><video autoplay muted loop playsinline poster="'
+            + esc(item.poster||"") + '" aria-label="'+esc(item.alt||"")+'">'+srcs+'</video></div>';
+    } else if(item.poster){
+      inner = '<div class="sheet-media"><img src="'+esc(item.poster)+'" alt="'+esc(item.alt||"")+'"></div>';
+    } else {
+      return '';
+    }
+    if(item.credit) inner += '<p class="sheet-credit">'+esc(item.credit)+'</p>';
+    return inner;
+  }
+
+  function open(set, id, trigger){
+    var list = DATA[set] || [];
+    var item = null;
+    for(var i=0;i<list.length;i++){ if(list[i].id === id){ item = list[i]; break; } }
+    if(!item) return;
+    lastTrigger = trigger;
+
+    var chips = item.tech && item.tech.length
+      ? '<ul class="chips">'+item.tech.map(function(t){ return '<li>'+esc(t)+'</li>'; }).join("")+'</ul>' : '';
+    var actions = item.links && item.links.length
+      ? '<div class="sheet-actions">'+item.links.map(function(l){
+          return '<a href="'+esc(l.u)+'" target="_blank" rel="noopener">'+esc(l.t)+'</a>'; }).join("")+'</div>' : '';
+
+    sheet.innerHTML =
+      '<div class="sheet-top"><span class="mono">'+esc(item.kicker)+'</span>'
+      + '<button class="sheet-close" type="button" aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>'
+      + media(item)
+      + '<div class="sheet-body">'
+      +   '<h3 id="sheetTitle">'+esc(item.title)+'</h3>'
+      +   '<p class="sheet-lede">'+esc(item.lede)+'</p>'
+      +   '<div class="sheet-grid">'+blk("What it is",item.what)+blk("What I did",item.did)
+      +     blk("Where it breaks",item.limits)+blk("What's next",item.next)+'</div>'
+      +   chips + actions
+      + '</div>';
+
+    back.hidden = false;
+    requestAnimationFrame(function(){ back.classList.add("open"); });
+    document.body.classList.add("locked");
+    sheet.querySelector(".sheet-close").focus();
+  }
+
+  function close(){
+    back.classList.remove("open");
+    document.body.classList.remove("locked");
+    window.setTimeout(function(){ back.hidden = true; sheet.innerHTML = ""; }, 200);
+    if(lastTrigger) lastTrigger.focus();
+  }
+
+  document.addEventListener("click", function(e){
+    var card = e.target.closest(".card");
+    if(card){ open(card.dataset.set, card.dataset.id, card); return; }
+    if(e.target.closest(".sheet-close")){ close(); return; }
+    if(e.target === back){ close(); }
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(back.hidden) return;
+    if(e.key === "Escape"){ close(); return; }
+    if(e.key === "Tab"){
+      var f = sheet.querySelectorAll("button, a[href]");
+      if(!f.length) return;
+      var first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
