@@ -488,15 +488,17 @@ body.locked{overflow:hidden}
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Exercise-Classification"}]
       },
       {
-        id:"noise", title:"Noise Cancellation", kicker:"Audio · signal processing",
-        tag:"CNN + LSTM", state:"",
-        frank:"2025", franknote:"Pulling a voice back out of a recording made in a noisy room",
-        desc:"Strips steady background noise off a voice recording.",
-        lede:"A model that removes stationary background noise from audio, isolating the voice underneath it.",
-        what:"I recorded three sets of audio myself — clean voice, background noise alone, and the two mixed — then used a Short-Time Fourier Transform to move into the frequency domain, where steady noise is separable from speech, and trained a CNN and LSTM to do the separation.",
-        did:"Collected the dataset, built the STFT pipeline, and trained the models. Doing the data collection by hand is what taught me why the mixed-signal case is hard: the noise isn't just added on top, it changes how the voice itself lands.",
-        tech:["CNN","LSTM","STFT","TensorFlow","librosa"],
-        links:[{t:"Repository",u:"https://github.com/ismailwangde/Noise-Cancellation"}]
+        id:"ocrqa", title:"OCR + Question Answering", kicker:"NLP · Streamlit app",
+        tag:"NLP", state:"",
+        poster:"assets/ocr-qa.webp",
+        alt:"A handwritten note uploaded to the app, beside the text it extracted and two ranked answers to a question about it, with confidence scores.",
+        desc:"Reads a handwritten note, then answers questions about it.",
+        lede:"Upload a photo of handwriting, and the app reads it, then answers plain-English questions about what it says.",
+        what:"An OCR stage pulls text out of the uploaded image, and an extractive question-answering transformer finds the span that answers your question — returning ranked candidates, each with a confidence score.",
+        did:"Built it end to end as a Streamlit app: upload, OCR, the QA model, and the ranked answers view.",
+        limits:"Cursive is hard on OCR — in this run it turned whole phrases into nonsense. The QA model still found the right answer (“incredible proprietary robot”, 0.48 confidence), which shows the useful property: it degrades gracefully when the text is only partly right.",
+        tech:["OCR","Transformers","Extractive QA","Streamlit","Python"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Speech-Natural-Language-Processing"}]
       },
       {
         id:"snow", title:"Snow Cover Prediction", kicker:"Time series",
@@ -508,6 +510,17 @@ body.locked{overflow:hidden}
         did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
         tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
+      },
+      {
+        id:"noise", title:"Noise Cancellation", kicker:"Audio · signal processing",
+        tag:"CNN + LSTM", state:"",
+        frank:"2025", franknote:"Pulling a voice back out of a recording made in a noisy room",
+        desc:"Strips steady background noise off a voice recording.",
+        lede:"A model that removes stationary background noise from audio, isolating the voice underneath it.",
+        what:"I recorded three sets of audio myself — clean voice, background noise alone, and the two mixed — then used a Short-Time Fourier Transform to move into the frequency domain, where steady noise is separable from speech, and trained a CNN and LSTM to do the separation.",
+        did:"Collected the dataset, built the STFT pipeline, and trained the models. Doing the data collection by hand is what taught me why the mixed-signal case is hard: the noise isn't just added on top, it changes how the voice itself lands.",
+        tech:["CNN","LSTM","STFT","TensorFlow","librosa"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Noise-Cancellation"}]
       }
     ],
     roles:[
