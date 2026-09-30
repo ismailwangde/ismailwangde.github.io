@@ -515,7 +515,8 @@ body.locked{overflow:hidden}
       {
         id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
         tag:"In daily use", state:"",
-        frank:"2026", franknote:"Bank SMS to a categorised Google Sheet, with no manual imports",
+        poster:"assets/spend-widget.webp",
+        alt:"iPhone home-screen widget showing September spend, a day-by-day bar chart, and totals by category.",
         desc:"Logs every bank debit automatically, straight from the SMS.",
         lede:"My spending tracks itself. Every debit SMS from HDFC, Union Bank and Kotak lands in a categorised Google Sheet within seconds, with no app and no manual import.",
         what:"An iOS Shortcuts message automation posts each bank SMS to an Apps Script web app. The script parses it with a per-bank parser, categorises the merchant by keyword, and writes it to a Sheet with budget and month-by-month category views. HDFC alert emails are polled every 15 minutes as a backup, deduplicated by UPI reference so nothing is counted twice.",
