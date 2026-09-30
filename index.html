@@ -511,6 +511,18 @@ body.locked{overflow:hidden}
         did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
         tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
+      },
+      {
+        id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
+        tag:"In daily use", state:"",
+        frank:"2026", franknote:"Bank SMS to a categorised Google Sheet, with no manual imports",
+        desc:"Logs every bank debit automatically, straight from the SMS.",
+        lede:"My spending tracks itself. Every debit SMS from HDFC, Union Bank and Kotak lands in a categorised Google Sheet within seconds, with no app and no manual import.",
+        what:"An iOS Shortcuts message automation posts each bank SMS to an Apps Script web app. The script parses it with a per-bank parser, categorises the merchant by keyword, and writes it to a Sheet with budget and month-by-month category views. HDFC alert emails are polled every 15 minutes as a backup, deduplicated by UPI reference so nothing is counted twice.",
+        did:"Built all of it: the parsers, deduplication, categorisation, the budget and summary tabs, and two iPhone home-screen widgets for daily and per-category spend. I backfilled it by parsing my bank statements (HDFC spreadsheets, Union and Kotak PDFs) into 650+ categorised rows, excluding own-account transfers and investments so the totals show real spending.",
+        limits:"Google Pay has no API and Account Aggregator isn't open to individuals, so bank SMS is the only real-time signal available, and every bank words it differently. When a bank changes its wording, the text lands in an Unparsed tab instead of being silently dropped.",
+        tech:["Google Apps Script","iOS Shortcuts","Scriptable","Google Sheets","Regex parsing"],
+        links:[]
       }
     ],
     roles:[
