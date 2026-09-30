@@ -502,17 +502,6 @@ body.locked{overflow:hidden}
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Speech-Natural-Language-Processing"}]
       },
       {
-        id:"snow", title:"Snow Cover Prediction", kicker:"Time series",
-        tag:"MSE 0.0174", state:"",
-        frank:"2023", franknote:"Satellite snow-cover series, forecast with ARIMA and SARIMAX",
-        desc:"Forecasting snow cover from satellite imagery.",
-        lede:"A forecast of snow cover built from satellite data pulled straight out of Google Earth Engine.",
-        what:"Collected the raw snow-cover series from Earth Engine, resampled it, decomposed trend and seasonality, then fitted ARIMA and SARIMAX — landing at a mean squared error of 0.0174.",
-        did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
-        tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
-        links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
-      },
-      {
         id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
         tag:"In daily use", state:"",
         poster:"assets/spend-widget.webp",
@@ -524,6 +513,17 @@ body.locked{overflow:hidden}
         limits:"Google Pay has no API and Account Aggregator isn't open to individuals, so bank SMS is the only real-time signal available, and every bank words it differently. When a bank changes its wording, the text lands in an Unparsed tab instead of being silently dropped.",
         tech:["Google Apps Script","iOS Shortcuts","Scriptable","Google Sheets","Regex parsing"],
         links:[]
+      },
+      {
+        id:"snow", title:"Snow Cover Prediction", kicker:"Time series",
+        tag:"MSE 0.0174", state:"",
+        frank:"2023", franknote:"Satellite snow-cover series, forecast with ARIMA and SARIMAX",
+        desc:"Forecasting snow cover from satellite imagery.",
+        lede:"A forecast of snow cover built from satellite data pulled straight out of Google Earth Engine.",
+        what:"Collected the raw snow-cover series from Earth Engine, resampled it, decomposed trend and seasonality, then fitted ARIMA and SARIMAX — landing at a mean squared error of 0.0174.",
+        did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
+        tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
       }
     ],
     roles:[
