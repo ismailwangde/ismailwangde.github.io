@@ -567,6 +567,19 @@ body.locked{overflow:hidden}
     ],
     papers:[
       {
+        id:"spinal", title:"Spinal Cord Shift Prediction in Radiotherapy", kicker:"Manuscript · publication in progress",
+        tag:"In progress", state:"progress",
+        poster:"assets/spinal-cord-paper.webp",
+        alt:"A CT slice of the neck with the spinal cord outlined by an expert and filled in by the model, above a chart of predicted versus true spinal cord shifts.",
+        desc:"Finds the spinal cord on CT, then predicts how it shifts during treatment.",
+        lede:"A Deep Learning Framework for Spinal Cord Segmentation and Displacement Prediction in Head and Neck Cancer Patients Undergoing Radiotherapy, with the radiation oncology team at Nanavati Max Super Speciality Hospital.",
+        what:"Radiation for head and neck cancer has to miss the spinal cord, but the cord moves as tumours shrink and patients lose weight over weeks of treatment. A U-Net outlines the cord on each CT scan, then a CNN–LSTM reads the scans in sequence and predicts how far it will shift. The outline matched the oncologist's at a Dice score above 0.85, and predicted shifts were within 0.57 mm vertically and 1.05 mm horizontally on average.",
+        did:"Co-authored, from my ML research internship at Nanavati. We were trained by the oncology team to contour the spinal cord ourselves, labelled the CT scans of 21 patients under an oncologist's review, and built the segmentation and shift-prediction pipeline.",
+        limits:"21 patients from one hospital, using CT only. It needs testing on other hospitals' scanners before anyone should rely on it clinically, and the paper says as much.",
+        tech:["U-Net","ConvLSTM","PyTorch","DICOM","Medical imaging"],
+        links:[]
+      },
+      {
         id:"icoct", title:"AI Detection & Tracking for Crime Prevention", kicker:"IEEE ICOCT 2025",
         tag:"IEEE", state:"paper",
         poster:"assets/crime-detection.webp",
