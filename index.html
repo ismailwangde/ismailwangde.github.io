@@ -114,7 +114,7 @@ h1,h2,.card-title,.feat-title{
 
 /* white postcard mount for a wide screenshot */
 .mount{background:var(--card);padding:11px;box-shadow:0 16px 36px -20px rgba(42,29,22,.30),0 1px 0 rgba(42,29,22,.06)}
-.mount img{width:100%}
+.mount img,.mount video{width:100%;height:auto;display:block;background:#0e1117}
 
 /* cookassist runs on a phone, so it gets a device rather than a card mount —
    the frame holds a portrait screenshot today and a portrait screen
@@ -300,18 +300,12 @@ body.locked{overflow:hidden}
         </div>
       </div>
       <figure class="feat-media">
-        <!-- TO SWAP IN THE SCREEN RECORDING: replace the <img> below with
-             <video autoplay muted loop playsinline poster="assets/cook-pantry.webp">
-               <source src="assets/cookassist.webm" type="video/webm">
-               <source src="assets/cookassist.mp4" type="video/mp4">
-             </video>
-             Nothing else changes — the device frame already holds portrait media. -->
         <div class="device">
           <div class="device-screen">
-            <img src="assets/cook-pantry.webp" width="720" height="1559" alt="Cookassist asking in Hindi whether coriander, white chana and capsicum are in stock, with yes and no buttons and a speaking bar along the bottom." loading="lazy">
+            <video controls playsinline preload="none" poster="assets/cook-pantry.webp" aria-label="Cookassist demo: the assistant greeting in Hindi, planning the day's meals and reading recipe steps aloud."><source src="assets/cookassist-demo.mp4" type="video/mp4"></video>
           </div>
         </div>
-        <figcaption>It checks the pantry in Hindi before you start cooking.</figcaption>
+        <figcaption>One-minute demo, with sound — it speaks Hindi.</figcaption>
       </figure>
     </div>
   </div>
@@ -339,7 +333,7 @@ body.locked{overflow:hidden}
       </div>
       <figure class="feat-media">
         <div class="mount">
-          <img src="assets/istock-verdicts.webp" width="1600" height="904" alt="istock interface showing a price chart with moving averages and volume, then a Why This Verdict panel listing seven supporting signals and nine risk signals with their underlying values." loading="lazy">
+          <video controls playsinline preload="none" width="1280" height="680" poster="assets/istock-verdicts.webp" aria-label="istock demo walkthrough: the evidence behind a verdict, with supporting and risk signals."><source src="assets/istock-demo.mp4" type="video/mp4"></video>
         </div>
         <figcaption>Every signal, and every counter-signal, with the number behind it.</figcaption>
       </figure>

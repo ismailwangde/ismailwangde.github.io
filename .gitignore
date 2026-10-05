@@ -14,3 +14,5 @@
 
 .DS_Store
 *.local.html
+!assets/istock-demo.mp4
+!assets/cookassist-demo.mp4
