@@ -156,6 +156,10 @@ h1,h2,.card-title,.feat-title{
 /* franking block — the designed no-image treatment */
 .card-frank{aspect-ratio:3/2;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;justify-content:space-between;padding:13px;position:relative}
 .card-frank .frank-yr{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.card-frank .frank-flow{display:flex;flex-direction:column;gap:3px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:-.01em;line-height:1.5;color:var(--cream);border-left:2px solid var(--pine);padding-left:10px}
+.card-frank .frank-logo{align-self:flex-start;width:72px;height:72px;display:grid;place-items:center;overflow:hidden}
+.card-frank .frank-logo[data-bg="light"]{background:#fff;padding:4px}
+.card-frank .frank-logo img{width:100%;height:100%;object-fit:contain}
 .card-frank .frank-note{font-size:11.5px;line-height:1.45;color:#B3A08D;max-width:26ch}
 .card-tag{position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:4px 7px;z-index:1}
 .card-tag[data-state="progress"]{background:var(--sienna)}
@@ -260,7 +264,7 @@ body.locked{overflow:hidden}
 <section class="hero">
   <div class="wrap">
     <div class="hero-main">
-      <p class="mono hero-loc">Mumbai, India · open to Data Science, AI Analytics &amp; ML Engineering roles</p>
+      <p class="mono hero-loc">Mumbai, India · open to Data Science, AI Analytics &amp; AI Engineering roles</p>
       <h1>Ismail Wangde</h1>
       <p class="hero-thesis">Turning real problems into AI tools people use.</p>
       <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, building AI commerce advisor and credit risk models. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
@@ -519,6 +523,7 @@ body.locked{overflow:hidden}
       {
         id:"orb", title:"Orb", kicker:"Drug-alert matching · AWS",
         tag:"In build", state:"progress", frank:"Orb", franknote:"Government drug alerts, matched to our own stock every morning",
+        flow:["CDSCO alerts → clean batch nos.","→ match our sales → affected chemists"],
         desc:"Catches recalled or fake medicine batches in our own purchases and sales.",
         lede:"Every morning it checks the regulator's public list of substandard and counterfeit medicine batches against what we bought and sold, and says who was affected and what to do.",
         what:"A scheduled AWS pipeline downloads CDSCO's alert lists, keeps a raw copy, cleans batch numbers and names so they compare reliably, matches them against our transactions, and lists every flagged batch with how much went to which chemists.",
@@ -529,6 +534,7 @@ body.locked{overflow:hidden}
       {
         id:"score", title:"Fundly Score", kicker:"Multi-vertical scoring · AWS Lambda",
         tag:"5 verticals", state:"", frank:"0–100", franknote:"One score per vertical: lending, bureau, payments, PD, commerce",
+        flow:["lending · bureau · payments · commerce","· drug license OCR verify → 0–100 score"],
         desc:"One API that tells distributors which retailers to lend to, chase, or grow.",
         lede:"A customer score built from everything we see about a retailer — lending, bureau, payments, commerce and GST — served as one API.",
         what:"Each vertical returns a 0–100 score with a band, a confidence level and reason codes. Lending and PD use WOE scorecards, payments predicts when receivables actually get paid, and commerce scores how valuable a buyer is rather than how risky.",
@@ -540,6 +546,7 @@ body.locked{overflow:hidden}
       {
         id:"iris", title:"IRIS", kicker:"Multi-agent LLM · Text-to-SQL",
         tag:"In use", state:"", frank:"IRIS", franknote:"Plain-English questions in, answers from the database out",
+        flow:["question → Intent Agent","→ Planner → SQL → answer"],
         desc:"Lets non-technical teams ask the database questions in plain English.",
         lede:"A multi-agent text-to-SQL system, so business teams get answers without writing SQL or waiting on the data team.",
         what:"An Intent Agent works out what the question is about, a Query Planner picks the tables and the approach, and few-shot SQL generation writes the query over a YAML description of the schema.",
@@ -548,18 +555,21 @@ body.locked{overflow:hidden}
         links:[]
       },
       {
-        id:"druglic", title:"Drug License Fraud Check", kicker:"GenAI · OCR · RAG",
-        tag:"Prototype", state:"progress", frank:"L / M / H", franknote:"Risk tier with plain-English reasons; a person decides",
-        desc:"Reads a drug license and says how likely it is to be fake, and why.",
-        lede:"Upload a drug license as a PDF or photo, and get back a Low, Medium or High fraud risk with the reasons spelled out. A human makes the final call.",
-        what:"OCR reads the document, it's classified and its fields extracted, then a set of checks and retrieval over reference documents produce the risk tier and the reasons behind it.",
-        did:"Took over the prototype, validated it on real reference licenses, and ported the whole pipeline from n8n to tested Python.",
-        tech:["OCR","LLM","RAG","Python","n8n"],
+        id:"payments", title:"Payment Recovery Score", kicker:"B2B pharma credit · PA-1",
+        tag:"Live", state:"", frank:"~3%", franknote:"error forecasting how much of the book comes back",
+        flow:["invoices → 60+ days old","→ recovery rate → risk tier"],
+        desc:"Predicts how much a retailer will actually pay its distributor back.",
+        lede:"Scores each distributor–retailer relationship on how much of what's owed is likely to come back, so collections know where the losses will be.",
+        what:"The score is the recovery rate on the pair's invoices older than 60 days, banded into High risk, Monitor and Low risk. Pairs with fewer than 3 matured invoices stay unrated instead of getting a falsely confident score. It scores the relationship, not the shop, because the same chemist can pay one distributor reliably and another not at all.",
+        did:"Built it and backtested it out-of-time. Gradient boosting on 11 features lost to this plain rate, so the simple model is what shipped. Across the portfolio it forecasts recoveries within about 3%, and it isolates the tail: a small set of accounts carries over half the expected loss.",
+        limits:"Per account it's a weak forecast, because most money comes back and there's little variance to predict. It says how much comes back, not when, because there's no reliable record of when distributors get paid.",
+        tech:["Python","pandas","SQL","Out-of-time backtesting","FastAPI"],
         links:[]
       },
       {
         id:"data", title:"Data & Dashboards", kicker:"Analytics · Credit strategy",
         tag:"8 → 50 mo", state:"", frank:"50 mo", franknote:"Usable history, rebuilt from 8 months",
+        flow:["8 months of history → 50 months","→ tables → dashboards"],
         desc:"Rebuilt the data history and the dashboards credit strategy runs on.",
         lede:"The groundwork the rest depends on: more history, correct tables, and dashboards people actually use for credit decisions.",
         what:"Customer, Lending and Collections, and Regional Manager performance dashboards, on top of rebuilt and corrected tables and automated extraction.",
@@ -571,6 +581,7 @@ body.locked{overflow:hidden}
     roles:[
       {
         id:"invento", title:"InventoHub", kicker:"AI/ML Engineer · Jan — Jun 2025",
+        logo:"assets/logo-inventohub.webp", logobg:"light",
         tag:"2025", state:"", frank:"4 TB", franknote:"45 years of data, made queryable",
         desc:"45 years of data, 4TB of it, made queryable.",
         lede:"AI/ML Engineer — I built the pipeline that turned 45 years of raw data into something a query could actually reach.",
@@ -581,6 +592,7 @@ body.locked{overflow:hidden}
       },
       {
         id:"nanavati", title:"Nanavati Hospital", kicker:"ML Research Intern · Dec 2023 — Jun 2024",
+        logo:"assets/logo-nanavati.webp", logobg:"",
         tag:"2023–24", state:"", frank:"0.57 mm", franknote:"average error predicting spinal cord shift",
         desc:"Predicting spinal cord shift in cancer patients.",
         lede:"ML Research Intern — a deep learning pipeline predicting how a patient's spinal cord shifts, for use in cancer treatment planning.",
@@ -591,6 +603,7 @@ body.locked{overflow:hidden}
       },
       {
         id:"databyte", title:"Databyte Services", kicker:"ML Research Intern · Jul 2023 — Dec 2024",
+        logo:"assets/logo-databyte.webp", logobg:"light",
         tag:"2023–24", state:"",
         frank:"86%", franknote:"detection accuracy across multiple cameras",
         desc:"Suspicious-activity detection across multiple cameras.",
@@ -602,6 +615,7 @@ body.locked{overflow:hidden}
       },
       {
         id:"alorb", title:"Alorb Technologies", kicker:"AI/ML Intern · May — Jul 2023",
+        logo:"assets/logo-alorb.webp", logobg:"",
         tag:"2023", state:"", frank:"R² 0.93", franknote:"employee productivity prediction",
         desc:"What actually drives employee productivity.",
         lede:"AI/ML Intern — my first role, working out which factors actually move employee productivity, then predicting it.",
@@ -681,6 +695,8 @@ body.locked{overflow:hidden}
     } else if(item.frank){
       top = '<span class="card-frank">'+tag
           + '<span class="frank-yr">'+esc(item.frank)+'</span>'
+          + (item.logo ? '<span class="frank-logo" data-bg="'+esc(item.logobg||"")+'"><img src="'+esc(item.logo)+'" alt="'+esc(item.title)+' logo" loading="lazy"></span>' : '')
+          + (item.flow ? '<span class="frank-flow">'+item.flow.map(function(l){ return '<span>'+esc(l)+'</span>'; }).join("")+'</span>' : '')
           + '<span class="frank-note">'+esc(item.franknote)+'</span></span>';
     } else {
       top = '<span class="card-well">'+tag+'</span>';
