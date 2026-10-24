@@ -86,7 +86,7 @@ h1,h2,.card-title,.feat-title{
 
 /* ---------- espresso metric band ---------- */
 .strip{background:var(--ink);color:var(--cream)}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding-block:24px}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding-block:24px}
 .strip dt{color:#A99483}
 .strip dd{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:clamp(20px,2.7vw,28px);font-variant-numeric:tabular-nums;line-height:1.05;margin-top:5px}
 .strip dd small{font-size:.5em;font-weight:400;color:#A99483;letter-spacing:.08em}
@@ -257,8 +257,8 @@ body.locked{overflow:hidden}
     <div class="hero-main">
       <p class="mono hero-loc">Mumbai, India · open to remote</p>
       <h1>Ismail Wangde</h1>
-      <p class="hero-thesis">I build ML systems end to end — raw data to production.</p>
-      <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, working on credit risk models and LLM systems. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
+      <p class="hero-thesis">I turn real problems into AI tools people use.</p>
+      <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, building AI commerce advisor and credit risk models. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
       <ul class="hero-links">
         <li><a href="https://github.com/ismailwangde">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/ismailwangde/">LinkedIn</a></li>
@@ -277,7 +277,6 @@ body.locked{overflow:hidden}
 <div class="strip">
   <div class="wrap">
     <div><dt class="mono">Experience</dt><dd>2<small> yrs</small></dd></div>
-    <div><dt class="mono">ETL pipeline</dt><dd>4<small> TB</small></dd></div>
     <div><dt class="mono">History rebuilt</dt><dd>50<small> mo</small></dd></div>
     <div><dt class="mono">Papers published</dt><dd>3</dd></div>
   </div>
@@ -293,13 +292,14 @@ body.locked{overflow:hidden}
     </div>
     <div class="feat feat--phone">
       <div class="feat-body">
-        <p class="feat-lede">A Hindi voice assistant for a home kitchen — it reads the recipe out loud, answers questions mid-cook, and works out what needs prepping tonight for tomorrow.</p>
-        <p class="body">I built it to kill a daily manual routine in my own house, not as a portfolio demo. That constraint drove every decision: it speaks and listens in Hindi, it has to work with wet hands, and it has to work when the wifi drops — so it runs offline as a PWA on the home network.</p>
+        <p class="feat-lede">A Hindi voice assistant for a home kitchen — it reads the recipe out loud, answers questions mid-cook, and works out what needs prepping for the week.</p>
+        <p class="body">I built it to kill a daily manual routine in my own house, not as a portfolio demo. That constraint drove every decision: it speaks and listens in Hindi.</p>
         <p class="body">It checks the pantry before you start, walks the steps one at a time, and projects tomorrow's prep from tonight's plan.</p>
         <ul class="chips">
           <li>Python</li><li>FastAPI</li><li>SQLite</li><li>Offline PWA</li><li>LLM</li><li>Hindi TTS / ASR</li>
         </ul>
         <div class="feat-actions">
+          <a href="https://cookassist.ismailwangde.com/demo">Try the demo kitchen</a>
           <a href="https://github.com/ismailwangde/cook-assist">View repository</a>
         </div>
       </div>
@@ -474,17 +474,17 @@ body.locked{overflow:hidden}
   var DATA = {
     projects:[
       {
-        id:"exercise", title:"Exercise Classification", kicker:"Real-time computer vision",
-        tag:"Live demo", state:"",
-        poster:"assets/exercise-poster.webp",
-        video:["assets/exercise.webm","assets/exercise.mp4"],
-        alt:"Pose skeleton tracked over a person standing, with squats and pushups labels on screen and the active exercise highlighted.",
-        desc:"Names the exercise you're doing and counts your reps, live.",
-        lede:"A real-time system that watches a video feed, works out which exercise is being performed, and counts the repetitions as they happen.",
-        what:"MediaPipe Pose maps the body's joint locations frame by frame, and an LSTM classifies the movement sequence into an exercise — squats, push-ups and others — while a rep counter tracks each completed cycle.",
-        did:"Built the whole pipeline: pose extraction, the sequence model, and the rep-counting logic that has to survive people moving at different speeds and standing at different distances from the camera.",
-        tech:["MediaPipe Pose","LSTM","TensorFlow","OpenCV","Python"],
-        links:[{t:"Repository",u:"https://github.com/ismailwangde/Exercise-Classification"}]
+        id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
+        tag:"In daily use", state:"",
+        poster:"assets/spend-widget.webp",
+        alt:"iPhone home-screen widget showing September spend, a day-by-day bar chart, and totals by category.",
+        desc:"Logs every bank debit automatically, straight from the SMS.",
+        lede:"My spending tracks itself. Every debit SMS from HDFC, Union Bank and Kotak lands in a categorised Google Sheet within seconds, with no app and no manual import.",
+        what:"An iOS Shortcuts message automation posts each bank SMS to an Apps Script web app. The script parses it with a per-bank parser, categorises the merchant by keyword, and writes it to a Sheet with budget and month-by-month category views. HDFC alert emails are polled every 15 minutes as a backup, deduplicated by UPI reference so nothing is counted twice.",
+        did:"Built all of it: the parsers, deduplication, categorisation, the budget and summary tabs, and two iPhone home-screen widgets for daily and per-category spend. I backfilled it by parsing my bank statements (HDFC spreadsheets, Union and Kotak PDFs) into 650+ categorised rows, excluding own-account transfers and investments so the totals show real spending.",
+        limits:"Google Pay has no API and Account Aggregator isn't open to individuals, so bank SMS is the only real-time signal available, and every bank words it differently. When a bank changes its wording, the text lands in an Unparsed tab instead of being silently dropped.",
+        tech:["Google Apps Script","iOS Shortcuts","Scriptable","Google Sheets","Regex parsing"],
+        links:[{t:"Set it up",u:"https://ismailwangde.github.io/spend-tracker/"}]
       },
       {
         id:"ocrqa", title:"OCR + Question Answering", kicker:"NLP · Streamlit app",
@@ -500,17 +500,17 @@ body.locked{overflow:hidden}
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Speech-Natural-Language-Processing"}]
       },
       {
-        id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
-        tag:"In daily use", state:"",
-        poster:"assets/spend-widget.webp",
-        alt:"iPhone home-screen widget showing September spend, a day-by-day bar chart, and totals by category.",
-        desc:"Logs every bank debit automatically, straight from the SMS.",
-        lede:"My spending tracks itself. Every debit SMS from HDFC, Union Bank and Kotak lands in a categorised Google Sheet within seconds, with no app and no manual import.",
-        what:"An iOS Shortcuts message automation posts each bank SMS to an Apps Script web app. The script parses it with a per-bank parser, categorises the merchant by keyword, and writes it to a Sheet with budget and month-by-month category views. HDFC alert emails are polled every 15 minutes as a backup, deduplicated by UPI reference so nothing is counted twice.",
-        did:"Built all of it: the parsers, deduplication, categorisation, the budget and summary tabs, and two iPhone home-screen widgets for daily and per-category spend. I backfilled it by parsing my bank statements (HDFC spreadsheets, Union and Kotak PDFs) into 650+ categorised rows, excluding own-account transfers and investments so the totals show real spending.",
-        limits:"Google Pay has no API and Account Aggregator isn't open to individuals, so bank SMS is the only real-time signal available, and every bank words it differently. When a bank changes its wording, the text lands in an Unparsed tab instead of being silently dropped.",
-        tech:["Google Apps Script","iOS Shortcuts","Scriptable","Google Sheets","Regex parsing"],
-        links:[]
+        id:"exercise", title:"Exercise Classification", kicker:"Real-time computer vision",
+        tag:"Live demo", state:"",
+        poster:"assets/exercise-poster.webp",
+        video:["assets/exercise.webm","assets/exercise.mp4"],
+        alt:"Pose skeleton tracked over a person standing, with squats and pushups labels on screen and the active exercise highlighted.",
+        desc:"Names the exercise you're doing and counts your reps, live.",
+        lede:"A real-time system that watches a video feed, works out which exercise is being performed, and counts the repetitions as they happen.",
+        what:"MediaPipe Pose maps the body's joint locations frame by frame, and an LSTM classifies the movement sequence into an exercise — squats, push-ups and others — while a rep counter tracks each completed cycle.",
+        did:"Built the whole pipeline: pose extraction, the sequence model, and the rep-counting logic that has to survive people moving at different speeds and standing at different distances from the camera.",
+        tech:["MediaPipe Pose","LSTM","TensorFlow","OpenCV","Python"],
+        links:[{t:"Repository",u:"https://github.com/ismailwangde/Exercise-Classification"}]
       },
       {
         id:"snow", title:"Snow Cover Prediction", kicker:"Time series",
