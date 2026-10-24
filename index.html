@@ -517,23 +517,13 @@ body.locked{overflow:hidden}
     ],
     fundly:[
       {
-        id:"iris", title:"IRIS", kicker:"Multi-agent LLM · Text-to-SQL",
-        tag:"In use", state:"", frank:"IRIS", franknote:"Plain-English questions in, answers from the database out",
-        desc:"Lets non-technical teams ask the database questions in plain English.",
-        lede:"A multi-agent text-to-SQL system, so business teams get answers without writing SQL or waiting on the data team.",
-        what:"An Intent Agent works out what the question is about, a Query Planner picks the tables and the approach, and few-shot SQL generation writes the query over a YAML description of the schema.",
-        did:"Designed the Intent Agent and Query Planner: domain intent classification, few-shot SQL generation, and the handling for ambiguous questions and for ones the data simply can't answer.",
-        tech:["Multi-agent LLM","Text-to-SQL","Python","SQL","YAML schema"],
-        links:[]
-      },
-      {
-        id:"ews", title:"Early Warning System", kicker:"Credit risk",
-        tag:"Live", state:"", frank:"EWS", franknote:"Customer risk, scored at the moment of disbursement",
-        desc:"Flags risky customers at disbursement, before the money goes out.",
-        lede:"A risk check that runs at disbursement, so the team sees which customers are likely to default before the loan is paid out.",
-        what:"Combines loan-default predictions with customers' behavioural signals and external market data into one risk view per customer.",
-        did:"Built the default model, the behavioural and market features, and the scoring used at disbursement.",
-        tech:["Credit risk","PD modelling","Python","SQL"],
+        id:"orb", title:"Orb", kicker:"Drug-alert matching · AWS",
+        tag:"In build", state:"progress", frank:"Orb", franknote:"Government drug alerts, matched to our own stock every morning",
+        desc:"Catches recalled or fake medicine batches in our own purchases and sales.",
+        lede:"Every morning it checks the regulator's public list of substandard and counterfeit medicine batches against what we bought and sold, and says who was affected and what to do.",
+        what:"A scheduled AWS pipeline downloads CDSCO's alert lists, keeps a raw copy, cleans batch numbers and names so they compare reliably, matches them against our transactions, and lists every flagged batch with how much went to which chemists.",
+        did:"Planned the system and its architecture, and am building it with the data pipeline, matching rules and review step.",
+        tech:["AWS Step Functions","EventBridge","S3","Python","Regex matching"],
         links:[]
       },
       {
@@ -548,6 +538,16 @@ body.locked{overflow:hidden}
         links:[]
       },
       {
+        id:"iris", title:"IRIS", kicker:"Multi-agent LLM · Text-to-SQL",
+        tag:"In use", state:"", frank:"IRIS", franknote:"Plain-English questions in, answers from the database out",
+        desc:"Lets non-technical teams ask the database questions in plain English.",
+        lede:"A multi-agent text-to-SQL system, so business teams get answers without writing SQL or waiting on the data team.",
+        what:"An Intent Agent works out what the question is about, a Query Planner picks the tables and the approach, and few-shot SQL generation writes the query over a YAML description of the schema.",
+        did:"Designed the Intent Agent and Query Planner: domain intent classification, few-shot SQL generation, and the handling for ambiguous questions and for ones the data simply can't answer.",
+        tech:["Multi-agent LLM","Text-to-SQL","Python","SQL","YAML schema"],
+        links:[]
+      },
+      {
         id:"druglic", title:"Drug License Fraud Check", kicker:"GenAI · OCR · RAG",
         tag:"Prototype", state:"progress", frank:"L / M / H", franknote:"Risk tier with plain-English reasons; a person decides",
         desc:"Reads a drug license and says how likely it is to be fake, and why.",
@@ -555,16 +555,6 @@ body.locked{overflow:hidden}
         what:"OCR reads the document, it's classified and its fields extracted, then a set of checks and retrieval over reference documents produce the risk tier and the reasons behind it.",
         did:"Took over the prototype, validated it on real reference licenses, and ported the whole pipeline from n8n to tested Python.",
         tech:["OCR","LLM","RAG","Python","n8n"],
-        links:[]
-      },
-      {
-        id:"orb", title:"Orb", kicker:"Drug-alert matching · AWS",
-        tag:"In build", state:"progress", frank:"Orb", franknote:"Government drug alerts, matched to our own stock every morning",
-        desc:"Catches recalled or fake medicine batches in our own purchases and sales.",
-        lede:"Every morning it checks the regulator's public list of substandard and counterfeit medicine batches against what we bought and sold, and says who was affected and what to do.",
-        what:"A scheduled AWS pipeline downloads CDSCO's alert lists, keeps a raw copy, cleans batch numbers and names so they compare reliably, matches them against our transactions, and lists every flagged batch with how much went to which chemists.",
-        did:"Planned the system and its architecture, and am building it with the data pipeline, matching rules and review step.",
-        tech:["AWS Step Functions","EventBridge","S3","Python","Regex matching"],
         links:[]
       },
       {
