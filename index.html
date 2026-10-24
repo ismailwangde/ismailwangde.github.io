@@ -149,7 +149,7 @@ h1,h2,.card-title,.feat-title{
   box-shadow:0 12px 30px -18px rgba(42,29,22,.34),0 1px 0 rgba(42,29,22,.06);
   transition:transform .22s ease,box-shadow .22s ease;
 }
-.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 22px 44px -18px rgba(42,29,22,.42)}
+.card:hover,.card:focus-visible,.card:focus-within{transform:translateY(-5px);box-shadow:0 22px 44px -18px rgba(42,29,22,.42)}
 .card-well{aspect-ratio:3/2;background:var(--well);display:flex;align-items:flex-end;padding:11px;position:relative;overflow:hidden}
 .card-well img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .card-well .mono{color:var(--well-ink);font-size:9px;line-height:1.7;position:relative}
@@ -163,6 +163,11 @@ h1,h2,.card-title,.feat-title{
 .card-frank .card-tag{background:var(--cream);color:var(--ink)}
 .card-cap{padding:13px 3px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card-title{font-size:16px;line-height:1.1;letter-spacing:-.03em}
+div.card{position:relative}
+.card-hit{position:absolute;inset:0;background:none;border:0;padding:0;cursor:pointer}
+.card-get{position:relative;z-index:2;align-self:flex-start;font-size:12.5px;line-height:1.4;color:var(--pine)}
+.card-get b{font-weight:600;border-bottom:1px solid var(--pine)}
+.card-get:hover b{color:var(--ink);border-bottom-color:var(--ink)}
 .card-desc{font-size:12.5px;line-height:1.5;color:var(--muted)}
 .card-more{margin-top:auto;padding-top:11px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--pine);display:flex;align-items:center;gap:6px}
 .card-more::after{content:"";width:14px;height:1px;background:var(--pine)}
@@ -255,9 +260,9 @@ body.locked{overflow:hidden}
 <section class="hero">
   <div class="wrap">
     <div class="hero-main">
-      <p class="mono hero-loc">Mumbai, India · open to remote</p>
+      <p class="mono hero-loc">Mumbai, India · open to Data Science, AI Analytics &amp; ML Engineering roles</p>
       <h1>Ismail Wangde</h1>
-      <p class="hero-thesis">I turn real problems into AI tools people use.</p>
+      <p class="hero-thesis">Turning real problems into AI tools people use.</p>
       <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, building AI commerce advisor and credit risk models. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
       <ul class="hero-links">
         <li><a href="https://github.com/ismailwangde">GitHub</a></li>
@@ -363,9 +368,7 @@ body.locked{overflow:hidden}
     <ul class="more-list">
       <li><b>Computer Vision collection</b> <span>detection and tracking, OCR, preprocessing, segmentation</span> <a href="https://github.com/ismailwangde/Computer-Vision">Repo</a></li>
       <li><b>NLP &amp; Speech collection</b> <span>NER, semantic search, OCR question answering, transformers</span> <a href="https://github.com/ismailwangde/Speech-Natural-Language-Processing">Repo</a></li>
-      <li><b>Noise Cancellation</b> <span>CNN + LSTM over STFT spectrograms, trained on audio I recorded myself</span> <a href="https://github.com/ismailwangde/Noise-Cancellation">Repo</a></li>
       <li><b>Online Banking on AWS</b> <span>Cognito, SageMaker, Amplify, DynamoDB; LDA credit scoring at 96%</span></li>
-      <li><b>PCA on face images</b> <span>Olivetti faces, dimensionality reduction and reconstruction, live OpenCV capture</span> <a href="https://github.com/ismailwangde/PCA-on-Image">Repo</a></li>
     </ul>
   </div>
 </section>
@@ -374,29 +377,16 @@ body.locked{overflow:hidden}
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-head-text">
-        <span class="mono">Where I've worked</span>
+        <span class="mono">Fundly.ai · Data Science Analyst · Jun 2025 — now</span>
         <h2>Systems I've shipped</h2>
       </div>
-    </div>
-    <div class="feat">
-      <div class="feat-body">
-        <h3 class="feat-title">Fundly.ai</h3>
-        <p class="feat-lede">Data Science Analyst · Mumbai · Jun 2025 — now</p>
-        <p class="body">I built <b>IRIS</b>, a multi-agent text-to-SQL system that lets non-technical teams ask business questions in plain English. I designed the Intent Agent and Query Planner — domain intent classification, few-shot SQL generation, and the handling for ambiguous questions and ones the data simply can't answer.</p>
-        <p class="body">Also here: an Early Warning System that scores customer risk at disbursement, a multi-vertical customer score spanning lending, payments, commerce, bureau and GST, and the rebuild that took usable history from 8 months to 50.</p>
-        <ul class="chips">
-          <li>Multi-agent LLM</li><li>Text-to-SQL</li><li>Credit risk</li><li>Python</li><li>SQL</li><li>AWS</li>
-        </ul>
+      <div class="rail-controls" data-for="rail-fundly">
+        <button class="rail-btn" data-dir="-1" aria-label="Scroll Fundly projects left"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button class="rail-btn" data-dir="1" aria-label="Scroll Fundly projects right"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
       </div>
-      <figure class="feat-media">
-        <div class="mount">
-          <div class="card-frank" style="aspect-ratio:16/9">
-            <span class="frank-yr">IRIS</span>
-            <span class="frank-note">Intent Agent → Query Planner → few-shot SQL generation, over a YAML schema. Fundly's system, so it stays at architecture level.</span>
-          </div>
-        </div>
-      </figure>
     </div>
+    <p class="rail-hint">Scroll sideways · click any card for detail</p>
+    <div class="rail-outer"><div class="rail" id="rail-fundly" data-set="fundly"></div></div>
   </div>
 </section>
 
@@ -475,6 +465,7 @@ body.locked{overflow:hidden}
     projects:[
       {
         id:"spend", title:"Spend Tracker", kicker:"Personal automation · Apps Script",
+        get:{t:"ismailwangde.github.io/spend-tracker",u:"https://ismailwangde.github.io/spend-tracker/"},
         tag:"In daily use", state:"",
         poster:"assets/spend-widget.webp",
         alt:"iPhone home-screen widget showing September spend, a day-by-day bar chart, and totals by category.",
@@ -522,6 +513,69 @@ body.locked{overflow:hidden}
         did:"End to end: collection, preprocessing, the seasonality analysis that justified SARIMAX over plain ARIMA, and the evaluation.",
         tech:["Google Earth Engine","statsmodels","ARIMA / SARIMAX","Python"],
         links:[{t:"Repository",u:"https://github.com/ismailwangde/Snow-Cover-Prediction"}]
+      }
+    ],
+    fundly:[
+      {
+        id:"iris", title:"IRIS", kicker:"Multi-agent LLM · Text-to-SQL",
+        tag:"In use", state:"", frank:"IRIS", franknote:"Plain-English questions in, answers from the database out",
+        desc:"Lets non-technical teams ask the database questions in plain English.",
+        lede:"A multi-agent text-to-SQL system, so business teams get answers without writing SQL or waiting on the data team.",
+        what:"An Intent Agent works out what the question is about, a Query Planner picks the tables and the approach, and few-shot SQL generation writes the query over a YAML description of the schema.",
+        did:"Designed the Intent Agent and Query Planner: domain intent classification, few-shot SQL generation, and the handling for ambiguous questions and for ones the data simply can't answer.",
+        tech:["Multi-agent LLM","Text-to-SQL","Python","SQL","YAML schema"],
+        links:[]
+      },
+      {
+        id:"ews", title:"Early Warning System", kicker:"Credit risk",
+        tag:"Live", state:"", frank:"EWS", franknote:"Customer risk, scored at the moment of disbursement",
+        desc:"Flags risky customers at disbursement, before the money goes out.",
+        lede:"A risk check that runs at disbursement, so the team sees which customers are likely to default before the loan is paid out.",
+        what:"Combines loan-default predictions with customers' behavioural signals and external market data into one risk view per customer.",
+        did:"Built the default model, the behavioural and market features, and the scoring used at disbursement.",
+        tech:["Credit risk","PD modelling","Python","SQL"],
+        links:[]
+      },
+      {
+        id:"score", title:"Fundly Score", kicker:"Multi-vertical scoring · AWS Lambda",
+        tag:"5 verticals", state:"", frank:"0–100", franknote:"One score per vertical: lending, bureau, payments, PD, commerce",
+        desc:"One API that tells distributors which retailers to lend to, chase, or grow.",
+        lede:"A customer score built from everything we see about a retailer — lending, bureau, payments, commerce and GST — served as one API.",
+        what:"Each vertical returns a 0–100 score with a band, a confidence level and reason codes. Lending and PD use WOE scorecards, payments predicts when receivables actually get paid, and commerce scores how valuable a buyer is rather than how risky.",
+        did:"Built the verticals and the single FastAPI service on AWS Lambda that serves them, with tests and invariant checks before anything is promoted.",
+        next:"The aggregator that blends the verticals into one customer score.",
+        tech:["WOE scorecards","FastAPI","AWS Lambda","Python","SQL"],
+        links:[]
+      },
+      {
+        id:"druglic", title:"Drug License Fraud Check", kicker:"GenAI · OCR · RAG",
+        tag:"Prototype", state:"progress", frank:"L / M / H", franknote:"Risk tier with plain-English reasons; a person decides",
+        desc:"Reads a drug license and says how likely it is to be fake, and why.",
+        lede:"Upload a drug license as a PDF or photo, and get back a Low, Medium or High fraud risk with the reasons spelled out. A human makes the final call.",
+        what:"OCR reads the document, it's classified and its fields extracted, then a set of checks and retrieval over reference documents produce the risk tier and the reasons behind it.",
+        did:"Took over the prototype, validated it on real reference licenses, and ported the whole pipeline from n8n to tested Python.",
+        tech:["OCR","LLM","RAG","Python","n8n"],
+        links:[]
+      },
+      {
+        id:"orb", title:"Orb", kicker:"Drug-alert matching · AWS",
+        tag:"In build", state:"progress", frank:"Orb", franknote:"Government drug alerts, matched to our own stock every morning",
+        desc:"Catches recalled or fake medicine batches in our own purchases and sales.",
+        lede:"Every morning it checks the regulator's public list of substandard and counterfeit medicine batches against what we bought and sold, and says who was affected and what to do.",
+        what:"A scheduled AWS pipeline downloads CDSCO's alert lists, keeps a raw copy, cleans batch numbers and names so they compare reliably, matches them against our transactions, and lists every flagged batch with how much went to which chemists.",
+        did:"Planned the system and its architecture, and am building it with the data pipeline, matching rules and review step.",
+        tech:["AWS Step Functions","EventBridge","S3","Python","Regex matching"],
+        links:[]
+      },
+      {
+        id:"data", title:"Data & Dashboards", kicker:"Analytics · Credit strategy",
+        tag:"8 → 50 mo", state:"", frank:"50 mo", franknote:"Usable history, rebuilt from 8 months",
+        desc:"Rebuilt the data history and the dashboards credit strategy runs on.",
+        lede:"The groundwork the rest depends on: more history, correct tables, and dashboards people actually use for credit decisions.",
+        what:"Customer, Lending and Collections, and Regional Manager performance dashboards, on top of rebuilt and corrected tables and automated extraction.",
+        did:"Took usable history from 8 months to 50, fixed and built tables, automated the workflows and reports, and cut stakeholders' analysis time by about 2 hours. Worked directly with the co-founder, CGO and founder's office.",
+        tech:["SQL","Python","Dashboards","Automation"],
+        links:[]
       }
     ],
     roles:[
@@ -641,6 +695,17 @@ body.locked{overflow:hidden}
     } else {
       top = '<span class="card-well">'+tag+'</span>';
     }
+    if(item.get){
+      return '<div class="card" data-set="'+set+'" data-id="'+item.id+'">'
+        + top
+        + '<span class="card-cap">'
+        +   '<span class="card-title">'+esc(item.title)+'</span>'
+        +   '<a class="card-get" href="'+esc(item.get.u)+'" target="_blank" rel="noopener">Get yours at <b>'+esc(item.get.t)+'</b></a>'
+        +   '<span class="card-desc">'+esc(item.desc)+'</span>'
+        +   '<span class="card-more">Detail</span>'
+        + '</span>'
+        + '<button class="card-hit" type="button" aria-label="'+esc(item.title)+': detail"></button></div>';
+    }
     return '<button class="card" type="button" data-set="'+set+'" data-id="'+item.id+'">'
       + top
       + '<span class="card-cap">'
@@ -737,8 +802,9 @@ body.locked{overflow:hidden}
   }
 
   document.addEventListener("click", function(e){
+    if(e.target.closest(".card-get")) return;
     var card = e.target.closest(".card");
-    if(card){ open(card.dataset.set, card.dataset.id, card); return; }
+    if(card){ open(card.dataset.set, card.dataset.id, card.querySelector(".card-hit") || card); return; }
     if(e.target.closest(".sheet-close")){ close(); return; }
     if(e.target === back){ close(); }
   });
