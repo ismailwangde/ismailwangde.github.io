@@ -105,6 +105,10 @@ h1,h2,.card-title,.feat-title{
 .feat--flip{grid-template-columns:1.1fr .9fr}
 .feat--flip .feat-media{order:-1}
 .feat-body{display:flex;flex-direction:column;gap:14px;min-width:0}
+.feat--head .sec-head-text{margin-bottom:6px}
+.feat--head .sec-head-text h2{font-size:clamp(23px,3.2vw,36px);line-height:1}
+.feat-media-head{margin-bottom:6px}
+.feat-media-head h2{font-size:clamp(23px,3.2vw,36px);line-height:1}
 .feat-title{font-size:clamp(26px,3.6vw,42px);line-height:.95}
 .feat-lede{font-size:16.5px;line-height:1.6;font-weight:500}
 .feat p.body{font-size:14.5px;line-height:1.72;color:var(--muted);max-width:60ch}
@@ -123,7 +127,7 @@ h1,h2,.card-title,.feat-title{
 /* cookassist runs on a phone, so it gets a device rather than a card mount —
    the frame holds a portrait screenshot today and a portrait screen
    recording later, with no layout change */
-.feat--phone{grid-template-columns:1fr minmax(230px,290px)}
+.feat--phone{grid-template-columns:1fr minmax(190px,230px)}
 .device{
   background:var(--ink);padding:9px;border-radius:28px;
   box-shadow:0 26px 54px -22px rgba(42,29,22,.5),0 2px 0 rgba(42,29,22,.1);
@@ -138,7 +142,7 @@ h1,h2,.card-title,.feat-title{
 .rail-btn:disabled{opacity:.3;cursor:default}
 .rail-btn svg{width:14px;height:14px}
 .rail-outer{position:relative;margin-inline:calc(var(--pad) * -1)}
-.rail{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:6px var(--pad) 24px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-padding-inline:var(--pad);overflow-y:hidden;scroll-snap-type:x mandatory;padding:6px var(--pad) 24px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
 .rail::-webkit-scrollbar{height:8px}
 .rail::-webkit-scrollbar-track{background:var(--rule-soft)}
 .rail::-webkit-scrollbar-thumb{background:var(--rule)}
@@ -156,11 +160,14 @@ h1,h2,.card-title,.feat-title{
 /* franking block — the designed no-image treatment */
 .card-frank{aspect-ratio:3/2;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;justify-content:space-between;padding:13px;position:relative}
 .card-frank .frank-yr{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
-.card-frank.frank--flow{justify-content:center;padding:44px 22px 22px}
-.card-frank .frank-flow{display:flex;flex-direction:column;gap:10px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.35;color:#fff;border-left:3px solid var(--pine);padding-left:14px}
-.card-frank .frank-logo{align-self:flex-start;width:72px;height:72px;display:grid;place-items:center;overflow:hidden}
-.card-frank .frank-logo[data-bg="light"]{background:#fff;padding:4px}
-.card-frank .frank-logo img{width:100%;height:100%;object-fit:contain}
+.card-frank.frank--flow{justify-content:center;padding:40px 20px 20px}
+.card-frank .frank-flow{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;font-weight:600;letter-spacing:-.01em;line-height:1.6}
+.card-frank .frank-flow span{background:#fff;color:var(--ink);padding:3px 8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.card-frank.frank--logo{justify-content:center;align-items:center;padding:14px}
+.card-frank.frank--logo[data-bg="light"]{background:#fff;box-shadow:inset 0 0 0 1px var(--rule)}
+.card-frank.frank--logo[data-bg="navy"]{background:#203B70}
+.card-frank.frank--logo img{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:contain}
+.card-frank.frank--logo .card-tag{background:var(--ink);color:var(--cream)}
 .card-frank .frank-note{font-size:11.5px;line-height:1.45;color:#B3A08D;max-width:26ch}
 .card-tag{position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:4px 7px;z-index:1}
 .card-tag[data-state="progress"]{background:var(--sienna)}
@@ -227,7 +234,9 @@ body.locked{overflow:hidden}
   .portrait{max-width:340px}
   .feat,.feat--flip,.feat--phone{grid-template-columns:1fr;gap:24px}
   .feat-media,.feat--flip .feat-media{order:-1}
-  .feat--phone .feat-media{justify-self:center;max-width:280px}
+  .feat--phone .feat-media{justify-self:center;max-width:240px}
+  .feat--head .feat-media{order:1}
+  .feat--head.feat--flip .feat-media{order:-1}
   .strip .wrap{grid-template-columns:1fr 1fr;gap:20px}
   .strip div+div{border-left:0;padding-left:0}
   .strip div:nth-child(2),.strip div:nth-child(4){border-left:1px solid #46352A;padding-left:20px}
@@ -241,6 +250,16 @@ body.locked{overflow:hidden}
   html{scroll-behavior:auto}
   .rail{scroll-behavior:auto}
 }
+
+/* COMPACT PREVIEW */
+.hero .wrap{padding-block:clamp(28px,4vw,56px)}
+.sec>.wrap{padding-block:clamp(26px,3.2vw,42px)}
+.sec-head{margin-bottom:18px}
+.rail{padding-bottom:16px}
+.rail-hint{margin-top:-6px}
+.more-list{margin-top:4px}
+.more-list li{padding:9px 0}
+.foot .wrap{padding-block:26px}
 </style>
 </head>
 <body>
@@ -265,7 +284,7 @@ body.locked{overflow:hidden}
 <section class="hero">
   <div class="wrap">
     <div class="hero-main">
-      <p class="mono hero-loc">Mumbai, India · open to Data Science, AI Analytics &amp; AI Engineering roles</p>
+      <p class="mono hero-loc">Mumbai, India · Data Scientist</p>
       <h1>Ismail Wangde</h1>
       <p class="hero-thesis">Turning real problems into AI tools people use.</p>
       <p class="hero-role">Data Scientist at <b>Fundly.ai</b>, building AI commerce advisor and credit risk models. Before that, 4TB pipelines at InventoHub and medical imaging research at Nanavati Hospital.</p>
@@ -294,14 +313,12 @@ body.locked{overflow:hidden}
 
 <section class="sec" id="cookassist">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-head-text">
-        <span class="mono">Featured · built and running</span>
-        <h2>Cookassist</h2>
-      </div>
-    </div>
-    <div class="feat feat--phone">
+    <div class="feat feat--phone feat--head">
       <div class="feat-body">
+        <div class="sec-head-text">
+          <span class="mono">Featured · built and running</span>
+          <h2>Cookassist</h2>
+        </div>
         <p class="feat-lede">A Hindi voice assistant for a home kitchen — it reads the recipe out loud, answers questions mid-cook, and works out what needs prepping for the week.</p>
         <p class="body">I built it to kill a daily manual routine in my own house, not as a portfolio demo. That constraint drove every decision: it speaks and listens in Hindi.</p>
         <p class="body">It checks the pantry before you start, walks the steps one at a time, and projects tomorrow's prep from tonight's plan.</p>
@@ -327,13 +344,7 @@ body.locked{overflow:hidden}
 
 <section class="sec" id="istock">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-head-text">
-        <span class="mono">Featured · in progress</span>
-        <h2>istock</h2>
-      </div>
-    </div>
-    <div class="feat feat--flip">
+    <div class="feat feat--flip feat--head">
       <div class="feat-body">
         <p class="feat-lede">Transparency-first equity research, built as a deliberate counter to black-box “AI stock picker” products.</p>
         <p class="body">Everything that goes into a verdict is shown on the page — and so is everything that argues against it. The screenshot is a real output: <b>7 supporting signals against 9 risk signals</b>, each with the actual number behind it, plus 40 more lower-signal factors you can expand. No blind buy or sell call.</p>
@@ -346,6 +357,10 @@ body.locked{overflow:hidden}
         </div>
       </div>
       <figure class="feat-media">
+        <div class="sec-head-text feat-media-head">
+          <span class="mono">Featured · complete</span>
+          <h2>istock</h2>
+        </div>
         <div class="mount">
           <video controls playsinline preload="none" width="1280" height="606" poster="assets/istock-verdicts.webp" aria-label="istock demo walkthrough: the evidence behind a verdict, with supporting and risk signals."><source src="assets/istock-demo.mp4" type="video/mp4"></video>
         </div>
@@ -449,7 +464,7 @@ body.locked{overflow:hidden}
 
 <footer class="foot" id="contact">
   <div class="wrap">
-    <p>Open to data science &amp; ML engineering roles</p>
+    <p>Open to Data Science, AI Analytics &amp; AI Engineering roles</p>
     <ul class="foot-links">
       <li><a href="mailto:wangdeismail@gmail.com">wangdeismail@gmail.com</a></li>
       <li><a href="https://www.linkedin.com/in/ismailwangde/">LinkedIn</a></li>
@@ -524,7 +539,7 @@ body.locked{overflow:hidden}
       {
         id:"orb", title:"Orb", kicker:"Drug-alert matching · AWS",
         tag:"In build", state:"progress", frank:"Orb", franknote:"Government drug alerts, matched to our own stock every morning",
-        flow:["CDSCO alerts → clean batch nos.","→ match our sales → affected chemists"],
+        flow:["Commerce business AI expert"],
         desc:"Catches recalled or fake medicine batches in our own purchases and sales.",
         lede:"Every morning it checks the regulator's public list of substandard and counterfeit medicine batches against what we bought and sold, and says who was affected and what to do.",
         what:"A scheduled AWS pipeline downloads CDSCO's alert lists, keeps a raw copy, cleans batch numbers and names so they compare reliably, matches them against our transactions, and lists every flagged batch with how much went to which chemists.",
@@ -535,7 +550,7 @@ body.locked{overflow:hidden}
       {
         id:"score", title:"Fundly Score", kicker:"Multi-vertical scoring · AWS Lambda",
         tag:"5 verticals", state:"", frank:"0–100", franknote:"One score per vertical: lending, bureau, payments, PD, commerce",
-        flow:["lending · bureau · payments · commerce","· drug license OCR verify → 0–100 score"],
+        flow:["lending · bureau · payments","commerce · drug license OCR","verify → 0–100 score"],
         desc:"One API that tells distributors which retailers to lend to, chase, or grow.",
         lede:"A customer score built from everything we see about a retailer — lending, bureau, payments, commerce and GST — served as one API.",
         what:"Each vertical returns a 0–100 score with a band, a confidence level and reason codes. Lending and PD use WOE scorecards, payments predicts when receivables actually get paid, and commerce scores how valuable a buyer is rather than how risky.",
@@ -558,7 +573,7 @@ body.locked{overflow:hidden}
       {
         id:"payments", title:"Payment Recovery Score", kicker:"B2B pharma credit · PA-1",
         tag:"Live", state:"", frank:"~3%", franknote:"error forecasting how much of the book comes back",
-        flow:["invoices → 60+ days old","→ recovery rate → risk tier"],
+        flow:["invoices → predicted recovery","→ risk tier"],
         desc:"Predicts how much a retailer will actually pay its distributor back.",
         lede:"Scores each distributor–retailer relationship on how much of what's owed is likely to come back, so collections know where the losses will be.",
         what:"The score is the recovery rate on the pair's invoices older than 60 days, banded into High risk, Monitor and Low risk. Pairs with fewer than 3 matured invoices stay unrated instead of getting a falsely confident score. It scores the relationship, not the shop, because the same chemist can pay one distributor reliably and another not at all.",
@@ -569,8 +584,8 @@ body.locked{overflow:hidden}
       },
       {
         id:"data", title:"Data & Dashboards", kicker:"Analytics · Credit strategy",
-        tag:"8 → 50 mo", state:"", frank:"50 mo", franknote:"Usable history, rebuilt from 8 months",
-        flow:["8 months of history → 50 months","→ tables → dashboards"],
+        tag:"Data", state:"", frank:"50 mo", franknote:"Usable history, rebuilt from 8 months",
+        flow:["8 → 50 months history","Dashboards"],
         desc:"Rebuilt the data history and the dashboards credit strategy runs on.",
         lede:"The groundwork the rest depends on: more history, correct tables, and dashboards people actually use for credit decisions.",
         what:"Customer, Lending and Collections, and Regional Manager performance dashboards, on top of rebuilt and corrected tables and automated extraction.",
@@ -593,7 +608,7 @@ body.locked{overflow:hidden}
       },
       {
         id:"nanavati", title:"Nanavati Hospital", kicker:"ML Research Intern · Dec 2023 — Jun 2024",
-        logo:"assets/logo-nanavati.webp", logobg:"",
+        logo:"assets/logo-nanavati.webp", logobg:"navy",
         tag:"2023–24", state:"", frank:"0.57 mm", franknote:"average error predicting spinal cord shift",
         desc:"Predicting spinal cord shift in cancer patients.",
         lede:"ML Research Intern — a deep learning pipeline predicting how a patient's spinal cord shifts, for use in cancer treatment planning.",
@@ -693,13 +708,15 @@ body.locked{overflow:hidden}
     var top;
     if(item.poster){
       top = '<span class="card-well">'+tag+'<img src="'+esc(item.poster)+'" alt="'+esc(item.alt||"")+'" loading="lazy"></span>';
+    } else if(item.logo){
+      top = '<span class="card-frank frank--logo" data-bg="'+esc(item.logobg||"")+'">'+tag
+          + '<img src="'+esc(item.logo)+'" alt="'+esc(item.title)+' logo" loading="lazy"></span>';
     } else if(item.flow){
       top = '<span class="card-frank frank--flow">'+tag
           + '<span class="frank-flow">'+item.flow.map(function(l){ return '<span>'+esc(l)+'</span>'; }).join("")+'</span></span>';
     } else if(item.frank){
       top = '<span class="card-frank">'+tag
           + '<span class="frank-yr">'+esc(item.frank)+'</span>'
-          + (item.logo ? '<span class="frank-logo" data-bg="'+esc(item.logobg||"")+'"><img src="'+esc(item.logo)+'" alt="'+esc(item.title)+' logo" loading="lazy"></span>' : '')
           + '<span class="frank-note">'+esc(item.franknote)+'</span></span>';
     } else {
       top = '<span class="card-well">'+tag+'</span>';
